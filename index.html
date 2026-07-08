@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayhan Malek — Business & Information Systems Graduate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F7F4;
+    --surface:#FFFFFF;
+    --ink:#14171A;
+    --muted:#666B70;
+    --line:#E4E2DC;
+    --accent:#2F6F4E;
+    --accent-soft:#E7F0EA;
+    --radius:10px;
+    --display:'Space Grotesk', sans-serif;
+    --body:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--accent-soft); color:var(--accent);}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,247,244,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:var(--maxw); margin:0 auto;
+  }
+  .logo{
+    font-family:var(--mono); font-size:15px; font-weight:500;
+    text-decoration:none; letter-spacing:-0.02em;
+  }
+  .logo span{color:var(--accent);}
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{
+    font-family:var(--mono); font-size:13px; text-decoration:none;
+    color:var(--muted); transition:color .15s ease;
+  }
+  nav.links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-family:var(--mono); font-size:13px; text-decoration:none;
+    color:var(--accent); border:1px solid var(--accent);
+    padding:6px 12px; border-radius:6px; transition:background .15s ease,color .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--accent); color:#fff;}
+  @media (max-width:640px){ nav.links a:not(.nav-cta){display:none;} }
+
+  /* HERO */
+  .hero{padding:96px 0 72px;}
+  .prompt{
+    font-family:var(--mono); font-size:14px; color:var(--muted);
+    display:flex; gap:8px; margin-bottom:22px; align-items:center;
+  }
+  .prompt .sym{color:var(--accent);}
+  .caret{
+    display:inline-block; width:8px; height:16px; background:var(--accent);
+    margin-left:2px; animation:blink 1s steps(1) infinite;
+    vertical-align:-2px;
+  }
+  @media (prefers-reduced-motion: reduce){ .caret{animation:none; opacity:1;} }
+  @keyframes blink{ 50%{opacity:0;} }
+
+  h1.headline{
+    font-family:var(--display); font-weight:600;
+    font-size:clamp(32px, 5.2vw, 52px);
+    line-height:1.1; letter-spacing:-0.02em;
+    margin:0 0 20px;
+    max-width:17ch;
+  }
+  h1.headline .accent{color:var(--accent);}
+
+  .sub{
+    font-size:18px; color:var(--muted); max-width:54ch; margin:0 0 34px;
+  }
+
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:14px; text-decoration:none;
+    padding:11px 20px; border-radius:8px; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-primary:hover{background:#000;}
+  .btn-ghost{border:1px solid var(--line); color:var(--ink); background:var(--surface);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* facts row */
+  .facts{
+    margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr);
+    gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .fact{background:var(--surface); padding:16px 18px;}
+  .fact .k{font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px;}
+  .fact .v{font-family:var(--mono); font-size:14px; color:var(--ink);}
+  @media (max-width:640px){ .facts{grid-template-columns:1fr;} }
+
+  /* SECTION HEADERS */
+  section{padding:72px 0;}
+  section.alt{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; color:var(--accent);
+    letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:''; width:16px; height:1px; background:var(--accent);}
+  h2.section-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(24px,3.4vw,32px);
+    margin:0 0 40px; letter-spacing:-0.01em;
+  }
+
+  /* ABOUT */
+  .about-body{max-width:64ch; color:var(--muted); font-size:16px;}
+  .about-body p{margin:0 0 16px;}
+  .about-body strong{color:var(--ink); font-weight:600;}
+
+  /* PROJECTS */
+  .projects{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:760px){ .projects{grid-template-columns:1fr;} }
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:box-shadow .18s ease, transform .18s ease;
+  }
+  .card:hover{box-shadow:0 10px 28px rgba(20,23,26,0.07); transform:translateY(-2px);}
+  .card-tab{
+    font-family:var(--mono); font-size:12.5px; color:var(--muted);
+    background:var(--bg); border-bottom:1px solid var(--line);
+    padding:10px 16px; display:flex; align-items:center; gap:8px;
+  }
+  .card-tab .dot{width:8px; height:8px; border-radius:50%; background:var(--line);}
+  .card-body{padding:22px; flex:1; display:flex; flex-direction:column;}
+  .card-body h3{font-family:var(--display); font-size:19px; margin:0 0 10px; font-weight:600;}
+  .card-body ul{margin:0 0 18px; padding-left:18px; color:var(--muted); font-size:14.5px; flex:1;}
+  .card-body ul li{margin-bottom:6px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px;}
+  .tag{
+    font-family:var(--mono); font-size:11.5px; color:var(--accent);
+    background:var(--accent-soft); padding:4px 9px; border-radius:5px;
+  }
+
+  /* EDUCATION — commit log */
+  .log{border-left:2px solid var(--line); margin-left:6px;}
+  .commit{position:relative; padding:0 0 32px 28px;}
+  .commit:last-child{padding-bottom:0;}
+  .commit::before{
+    content:''; position:absolute; left:-7px; top:4px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--surface); border:2px solid var(--accent);
+  }
+  .commit-head{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-bottom:6px;
+  }
+  .hash{font-family:var(--mono); font-size:12.5px; color:var(--accent); background:var(--accent-soft); padding:2px 7px; border-radius:5px;}
+  .commit-role{font-family:var(--display); font-weight:600; font-size:16.5px;}
+  .commit-date{font-family:var(--mono); font-size:12px; color:var(--muted); margin-left:auto;}
+  .commit-msg{color:var(--muted); font-size:14.5px; max-width:60ch;}
+
+  /* SKILLS as dependency list */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:760px){ .skills-grid{grid-template-columns:1fr;} }
+  .deps{
+    font-family:var(--mono); font-size:14px; background:var(--surface);
+    border:1px solid var(--line); border-radius:var(--radius); padding:22px 26px;
+  }
+  .deps .file{color:var(--muted); font-size:12px; margin-bottom:14px;}
+  .dep-line{display:flex; justify-content:space-between; padding:5px 0; color:var(--ink); border-bottom:1px dashed var(--line);}
+  .dep-line:last-child{border-bottom:none;}
+  .dep-line .ver{color:var(--muted);}
+  .soft-tags{display:flex; flex-wrap:wrap; gap:10px; align-content:flex-start;}
+  .soft-tags .tag{font-size:13px; padding:8px 14px;}
+
+  /* CONTACT */
+  .contact-inner{display:flex; flex-direction:column; align-items:flex-start; gap:26px;}
+  .contact-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(26px,4vw,38px);
+    max-width:18ch; margin:0; letter-spacing:-0.02em;
+  }
+  .contact-title .accent{color:var(--accent);}
+  .term{
+    font-family:var(--mono); font-size:14px; background:var(--ink); color:#D9F2E4;
+    padding:18px 22px; border-radius:8px; width:100%; max-width:480px;
+  }
+  .term .l1{color:#8FA6A0; margin-bottom:10px;}
+  .term a{color:#D9F2E4; text-decoration:none; border-bottom:1px solid rgba(217,242,228,0.4);}
+  .term a:hover{border-color:#D9F2E4;}
+  .term .row{margin-bottom:6px;}
+  .term .row:last-child{margin-bottom:0;}
+
+  footer{
+    padding:28px 0; border-top:1px solid var(--line);
+  }
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+  footer p{font-family:var(--mono); font-size:12px; color:var(--muted); margin:0;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">~/<span>rayhan</span></a>
+    <nav class="links">
+      <a href="#about">about</a>
+      <a href="#work">projects</a>
+      <a href="#education">education</a>
+      <a href="#contact" class="nav-cta">say hi →</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="prompt"><span class="sym">$</span> whoami<span class="caret" id="caret"></span></div>
+      <h1 class="headline">Rayhan Malek — <span class="accent">cyber security &amp; software graduate</span> building secure, reliable systems.</h1>
+      <p class="sub">BBA graduate in Information Systems Management, currently pursuing an M.Sc. in Cyber Security. Interested in software development, database management, and security — looking for an entry-level role to put that into practice.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#work">View projects</a>
+        <a class="btn btn-ghost" href="mailto:rayhanmalek21pc@gmail.com">Get in touch</a>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><div class="k">Focus</div><div class="v">Cyber Security / Dev</div></div>
+        <div class="fact"><div class="k">Currently</div><div class="v">M.Sc. Cyber Security (in progress)</div></div>
+        <div class="fact"><div class="k">Status</div><div class="v">Fresher — open to roles</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h2 class="section-title">A bit of background</h2>
+      <div class="about-body">
+        <p>I'm a <strong>BBA graduate in Information Systems Management</strong> from Sardar Patel University, now pursuing an <strong>M.Sc. in Cyber Security</strong> at ISTAR, CVM University. My interests sit at the intersection of software development, database management, and security — how systems are built, and how they're kept safe.</p>
+        <p>I'm a fresher, ready to bring academic knowledge into a professional setting and grow quickly on the job. I'm comfortable picking up new tools and languages as needed, and I enjoy projects that involve real data and real access-control problems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <p class="eyebrow">Personal projects</p>
+      <h2 class="section-title">Things I've built</h2>
+      <div class="projects">
+
+        <div class="card">
+          <div class="card-tab"><span class="dot"></span>airline-system.vb</div>
+          <div class="card-body">
+            <h3>Airline Management System</h3>
+            <ul>
+              <li>Desktop application for airline ticket administration.</li>
+              <li>Manages passenger records, bookings, flight schedules and flight information.</li>
+              <li>Secure MySQL database integration.</li>
+            </ul>
+            <div class="tags"><span class="tag">VB.NET</span><span class="tag">MySQL</span><span class="tag">Visual Studio 2008</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-tab"><span class="dot"></span>erp-attendance.py</div>
+          <div class="card-body">
+            <h3>Secure ERP Attendance Management System</h3>
+            <ul>
+              <li>ERP system for attendance, marks, results and academic records.</li>
+              <li>Role-based access control for Students, Faculty and Administrators.</li>
+              <li>Secure database storage and management.</li>
+            </ul>
+            <div class="tags"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">RDBMS</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Education</p>
+      <h2 class="section-title">Academic background</h2>
+      <div class="log">
+
+        <div class="commit">
+          <div class="commit-head">
+            <span class="hash">msc</span>
+            <span class="commit-role">M.Sc. Cyber Security</span>
+            <span class="commit-date">In progress</span>
+          </div>
+          <p class="commit-msg">ISTAR, CVM University</p>
+        </div>
+
+        <div class="commit">
+          <div class="commit-head">
+            <span class="hash">bba</span>
+            <span class="commit-role">B.B.A. — Information Systems Management</span>
+            <span class="commit-date">CGPA: 6.81</span>
+          </div>
+          <p class="commit-msg">Sardar Patel University (SPU)</p>
+        </div>
+
+        <div class="commit">
+          <div class="commit-head">
+            <span class="hash">xii</span>
+            <span class="commit-role">Class XII</span>
+            <span class="commit-date">57.57%</span>
+          </div>
+        </div>
+
+        <div class="commit">
+          <div class="commit-head">
+            <span class="hash">x</span>
+            <span class="commit-role">Class X</span>
+            <span class="commit-date">60.66%</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">What I work with</h2>
+      <div class="skills-grid">
+        <div class="deps">
+          <div class="file">// technical</div>
+          <div class="dep-line"><span>python</span><span class="ver">core</span></div>
+          <div class="dep-line"><span>vb.net</span><span class="ver">core</span></div>
+          <div class="dep-line"><span>mysql / sql</span><span class="ver">core</span></div>
+          <div class="dep-line"><span>rdbms</span><span class="ver">core</span></div>
+          <div class="dep-line"><span>html / css / javascript</span><span class="ver">familiar</span></div>
+          <div class="dep-line"><span>visual studio 2008</span><span class="ver">familiar</span></div>
+          <div class="dep-line"><span>ms office</span><span class="ver">familiar</span></div>
+          <div class="dep-line"><span>cyber security fundamentals</span><span class="ver">learning</span></div>
+        </div>
+        <div class="deps">
+          <div class="file">// professional</div>
+          <div class="soft-tags">
+            <span class="tag">Problem Solving</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Time Management</span>
+            <span class="tag">Quick Learner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
+    <div class="wrap contact-inner">
+      <p class="eyebrow">Contact</p>
+      <h2 class="contact-title">Looking for an entry-level opportunity. <span class="accent">Let's talk.</span></h2>
+      <div class="term">
+        <div class="l1">$ curl -X POST /contact</div>
+        <div class="row">→ email: <a href="mailto:rayhanmalek21pc@gmail.com">rayhanmalek21pc@gmail.com</a></div>
+        <div class="row">→ phone: <a href="tel:+917069886841">+91 70698 86841</a></div>
+        <div class="row">→ location: Anand, Gujarat, India</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Rayhan Malek</p>
+    <p>Business &amp; Information Systems Graduate · M.Sc. Cyber Security Student</p>
+  </div>
+</footer>
+
+</body>
+</html>
